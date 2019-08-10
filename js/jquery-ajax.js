@@ -72,6 +72,21 @@
 
   // TODO: your code goes here :)
 
+  $('#generateDoggoBtn').click(dogButton)
+
+  function dogButton () {
+    $.getJSON('https://dog.ceo/api/breeds/image/random', dogHTML)
+
+  }
+
+  function dogHTML (dogData){
+    document.getElementById(doggoContainer)
+    console.log('Running dogHTML function, here is result : ')
+    console.dir(dogData)
+  }
+ 
+
+
   //
   // Cool. Now let's kick it up a notch and allow selecting a specific breed of dog!
   //
