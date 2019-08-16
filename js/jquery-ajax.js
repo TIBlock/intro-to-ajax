@@ -75,17 +75,17 @@
   $('#generateDoggoBtn').click(dogButton)
 
   function dogButton () {
-    $.getJSON('https://dog.ceo/api/breeds/image/random', dogHTML)
-
+    $.getJSON('https://dog.ceo/api/breeds/image/random', dogHTML);
+    $('#generateDoggoBtn').html("Generating Doggo ...");
+    $('#generateDoggoBtn').attr("disabled",true);
+    
   }
 
   function dogHTML (dogData){
-    document.getElementById(doggoContainer)
-    console.log('Running dogHTML function, here is result : ')
-    console.dir(dogData)
+    $('#doggoContainer').html('<img src="' + dogData.message + '"/>')
+    console.log('Running dogHTML function, here is result : ');
+    console.dir(dogData);
   }
- 
-
 
   //
   // Cool. Now let's kick it up a notch and allow selecting a specific breed of dog!
@@ -122,6 +122,27 @@
   //
 
   // TODO: your code goes here :)
+
+
+  
+  function dogList(){
+    $.ajax('https://dog.ceo/api/breeds/list', dogMenu)
+    console.log('ready')
+  }
+
+  $(document).ready(dogList)
+  
+  function dogMenu(dogInfo){
+    dogInfo.message.forEach(element => {
+      $('#dog_menu').append('<option value="poodle">Poodle</option>')
+      console.log(element)
+    });
+  console.log('Running dogMenu function, here is result : ');
+  console.dir(dogInfo)
+  }
+
+
+
 
   //
   // Excellent work!
